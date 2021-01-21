@@ -1,12 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import React from "react";
+import ToolPanel from "./components/tool-panel/ToolPanel";
 
 function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+	return (
+		<div className="App">
+			<ToolPanel>
+				<div className="Blank"></div>
+			</ToolPanel>
+		</div>
+	);
 }
 
 export default App;
