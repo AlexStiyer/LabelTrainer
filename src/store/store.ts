@@ -1,4 +1,13 @@
-// import {createStore} from "redux";
+import {createStore} from "redux";
+import { labelReducer } from "../reducers/LabelReducer"
+import {combineReducers} from "redux";
 
-// export default createStore({reducer: {} as reducer});
-export default {};
+const rootReducer = combineReducers({
+    labelReducer: labelReducer
+});
+
+const store = createStore(
+    rootReducer
+)
+
+export default store;
