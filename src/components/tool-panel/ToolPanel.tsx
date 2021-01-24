@@ -1,11 +1,7 @@
 import React  from "react";
 import "./ToolPanel.scss";
 
-interface IToolPanelPropTypes {
-	children? : unknown;
-}
-
-const ToolPanel: React.FC<IToolPanelPropTypes> = (props) => {
+const ToolPanel: React.FC<unknown> = (props) => {
 	return (
 		<div className="ToolPanel">
 			{props.children}
