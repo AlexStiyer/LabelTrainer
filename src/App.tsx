@@ -1,7 +1,7 @@
 import "./App.scss";
 import React from "react";
 import ToolPanel from "./components/tool-panel/ToolPanel";
-import BoxLabelsPanel from "./components/box-label-panel/Box-Labels-Panel";
+import BoxLabelsPanel from "./containers/box-label-panel/BoxLabelPanel";
 
 function App() {
 	return (
