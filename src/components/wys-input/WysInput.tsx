@@ -33,7 +33,7 @@ class WysInput extends React.Component<IWysInputProps, IWysInputState> {
 	/*
 		Resetting focus after submit causes inputValue and displayValue to desync 
 		and swap after every enter.
-		This ensures whatever is commi	ted to the top level state is displayed.
+		This ensures whatever is committed to the top level state is displayed.
 	*/
 	componentDidUpdate(prevProps: IWysInputProps){
 		if(this.props.displayValue != prevProps.displayValue){

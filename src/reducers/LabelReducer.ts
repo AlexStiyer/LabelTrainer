@@ -35,7 +35,10 @@ export const labelReducer = (state = intitialState, action : ILabelAction) : Ila
 		return {
 			...state,
 			labels: state.labels.map(x => {
-				if(x.id === action.data.id) 
+				if(x.id === action.data.id 
+						&& action.data.newKey
+						&& !state.labels.map(y => y.key)
+							.includes(action.data.newKey)) 
 					x.key = action.data.newKey;
 				return x;
 			})
@@ -63,6 +66,16 @@ export const labelReducer = (state = intitialState, action : ILabelAction) : Ila
 			selectedLabel: undefined
 		};
 
+	case labelActionTypes.RENAME_LABEL: 
+		return {
+			...state,
+			labels: state.labels.map(x => {
+				if(x.id === action.data.id)
+					x.name = action.data.newName;
+				return x;
+			})
+		};
+		
 	default:
 		return state;
 	}

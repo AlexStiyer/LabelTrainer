@@ -22,6 +22,12 @@ const defaultState : IAppState = {
 				color:"#f00",
 				key: "1",
 				name: "label0"
+			},
+			{
+				id: 1,
+				color:"#f00",
+				key: "2",
+				name: "label1"
 			}
 		],
 		selectedLabel: 0,
@@ -29,6 +35,7 @@ const defaultState : IAppState = {
 	}
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function configureStore(initState: any = defaultState):Store<IAppState, any> {
 	const store = createStore(rootReducer, initState);
 	return store;

@@ -3,7 +3,7 @@ import "./ToolPanel.scss";
 
 const ToolPanel: React.FC<unknown> = (props) => {
 	return (
-		<div className="ToolPanel">
+		<div className="ToolPanel p-2">
 			{props.children}
 		</div>
 	);
