@@ -2,6 +2,24 @@
 
 .hot-key-input{
   color: $txt-primary;
-  border-radius: 2px;
+  border-radius: 9px;
   border: 2px;
+  border-style: solid;
+  border-color: $txt-primary;
+}
+
+.hot-key-input input {
+  text-align: center;
+  width: 2em;
+  height: 2em;
+}
+
+.label-container {
+  color: $txt-primary;
+  background-color: $bg-light;
+  border-radius: 9px;
+}
+
+.label-container input {
+  color: $txt-primary;
 }

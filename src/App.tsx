@@ -7,7 +7,6 @@ function App() {
 	return (
 		<div className="App">
 			<ToolPanel>
-				<div className="Blank"></div>
 				<BoxLabelsPanel/>
 			</ToolPanel>
 		</div>

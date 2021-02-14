@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addNewLabel, clearSelectedLabel, removeLabel, removeLabelHotKey, renameLabel, updateLabelColor, updateLabelHotKey, setSelectedLabel } from "../../actions/labelActions";
+import { addNewLabel, clearSelectedLabel,
+	removeLabel, removeLabelHotKey, renameLabel,
+	updateLabelColor, updateLabelHotKey,
+	setSelectedLabel 
+} from "../../actions/labelActions";
 import LabelDisplay from "../../components/label-display/LabelDisplay";
-import WysInput from "../../components/wysinput/WysInput";
-import { labelReducer } from "../../reducers/LabelReducer";
 import { IlabelState, label } from "../../shared/models/Label";
 import { IAppState } from "../../store/Store";
 
@@ -39,29 +41,25 @@ const mapDispatchToProps: IPropsFromDispatch = {
 	clearSelectedLabel: clearSelectedLabel,
 };
 
-interface IBoxLabelPanelState{
-	keyBeingEdited: number
-	fakeInput: string;
-}
-
 type Props = IPropsFromDispatch & IPropsFromState;
 
-class BoxLabelsPanel extends React.Component<Props, IBoxLabelPanelState> {
+class BoxLabelsPanel extends React.Component<Props> {
 	constructor(props: Props){
 		super(props);
-		this.state = {keyBeingEdited: 0, fakeInput: "yeet"};
 	}
 	
 	render(){
 		return(
-			<div>
+			<div className="d-flex flex-column justify-content-start">
 				{this.props.labelListState.labels.map(label => {
-					<LabelDisplay
-						key={label.id}
-						label={label}
-						updateHotKey={this.props.updateLabelHotKey}
-						updateLabelName={this.props.renameLabel}
-					/>;
+					return (
+						<LabelDisplay
+							key={label.id}
+							label={label}
+							updateHotKey={(id,newHotKey) => this.props.updateLabelHotKey(id,newHotKey)}
+							updateLabelName={(id,newLabelName) => this.props.renameLabel(id,newLabelName)}
+						/>
+					);	
 				})}
 			</div>
 		);
