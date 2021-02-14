@@ -22,4 +22,9 @@
 
 .label-container input {
   color: $txt-primary;
+  text-align: center;
+}
+
+.label-container input:focus {
+  text-decoration: underline;
 }
