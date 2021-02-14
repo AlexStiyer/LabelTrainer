@@ -50,7 +50,7 @@ class BoxLabelsPanel extends React.Component<Props> {
 	
 	render(){
 		return(
-			<div className="d-flex flex-column justify-content-start">
+			<div className="d-flex flex-column justify-content-start" style={{width: "25vw"}}>
 				{this.props.labelListState.labels.map(label => {
 					return (
 						<LabelDisplay
@@ -58,6 +58,7 @@ class BoxLabelsPanel extends React.Component<Props> {
 							label={label}
 							updateHotKey={(id,newHotKey) => this.props.updateLabelHotKey(id,newHotKey)}
 							updateLabelName={(id,newLabelName) => this.props.renameLabel(id,newLabelName)}
+							updateColor={(id,newLabelName) => this.props.updateLabelColor(id,newLabelName)}
 						/>
 					);	
 				})}

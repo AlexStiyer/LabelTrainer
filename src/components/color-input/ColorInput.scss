@@ -1,0 +1,14 @@
+.color-input {
+  border-radius: 3px;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.color-picker-popover {
+  position:absolute;
+  margin-top: 10px;
+  z-index: 100 !important;
+  left: auto;
+  top: auto;
+  right: auto;
+}
