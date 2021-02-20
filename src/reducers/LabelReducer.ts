@@ -1,10 +1,10 @@
-import {IlabelState} from "../shared/models/Label";
+import {IlabelState, label} from "../shared/models/Label";
 import {ILabelAction, labelActionTypes} from "../actions/labelActions";
 
 const intitialState: IlabelState = {
 	labels : [],
 	isEditing: false,
-	selectedLabel: 0
+	selectedLabel: undefined
 };
 
 export const labelReducer = (state = intitialState, action : ILabelAction) : IlabelState => {
@@ -12,15 +12,18 @@ export const labelReducer = (state = intitialState, action : ILabelAction) : Ila
 	case labelActionTypes.ADD_LABEL:
 		return {
 			...state,
-			labels: [...state.labels, action.data.newLabel]
+			labels: [...state.labels, new label("newLabel","#ff0000","")]
 		};
 
 	case labelActionTypes.REMOVE_LABEL:
+		if(state.labels.length == 1){
+			state.labels.push((new label("newLabel","#ff0000","")));
+		}
 		return {
 			...state,
 			labels: state.labels.filter(x => x.id !== action.data.id)
 		};
-
+		
 	case labelActionTypes.UPDATE_LABEL_COLOR:
 		return {
 			...state,

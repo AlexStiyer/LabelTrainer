@@ -18,19 +18,19 @@ const defaultState : IAppState = {
 	LabelListState: {
 		labels: [
 			{
-				id: 0,
+				id: "abc",
 				color:"#f00",
 				key: "1",
 				name: "label0"
 			},
 			{
-				id: 1,
+				id: "def",
 				color:"#f00",
 				key: "2",
 				name: "label1"
 			}
 		],
-		selectedLabel: 0,
+		selectedLabel: "abc",
 		isEditing: false
 	}
 };

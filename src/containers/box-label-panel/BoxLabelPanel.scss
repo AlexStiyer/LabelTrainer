@@ -1,0 +1,15 @@
+@import "../../theme.scss";
+
+.header-text {
+  color: $txt-primary !important;
+}
+
+.add-label{
+  color: $txt-primary !important;
+}
+
+.add-label:hover{
+  color: $txt-primary !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
