@@ -6,7 +6,7 @@ import { Action } from "redux";
  * Reccomended to use a {key: value} definition even if only one parameter to make your reducers more declaritive.
  * @param type action to be dispatched
  * @param data updated state slice
- * @example IAction<LabelActionsEnum.EDIT_LABEL_NAME, {id: number, newName: string}
+ * @example IAction<LabelActionsEnum.EDIT_LABEL_NAME, {id : string, newName: string}
  */
 export default interface IAction<T1,T2> extends Action{
     type: T1,

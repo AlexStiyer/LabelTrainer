@@ -1,4 +1,3 @@
-import {label} from "../shared/models/Label";
 import IAction from "./IAction";
 
 export enum labelActionTypes {
@@ -12,25 +11,23 @@ export enum labelActionTypes {
     CLEAR_SELECTED_LABEL = "CLEAR_SELECTED_LABEL",
 }
 
-type IAddNewLabelAction = IAction<labelActionTypes.ADD_LABEL, {newLabel: label}>;
-type IRemoveLabelAction = IAction<labelActionTypes.REMOVE_LABEL, {id: number}>
-type IRenameLabelAction = IAction<labelActionTypes.RENAME_LABEL, {id: number, newName: string}>;
-type IUpdateLabelColorAction = IAction<labelActionTypes.UPDATE_LABEL_COLOR, {id: number, newColor: string}>;
-type IUpdateLabelHotKeyAction = IAction<labelActionTypes.UPDATE_LABEL_HOTKEY, {id: number, newKey: string}>;
-type IRemoveLabelHotkeyAction = IAction<labelActionTypes.REMOVE_LABEL_HOTKEY, {id:number}>
-type ISetSelectedLabelAction = IAction<labelActionTypes.SET_SELECTED_LABEL, {id:number}>
+type IAddNewLabelAction = IAction<labelActionTypes.ADD_LABEL, undefined>;
+type IRemoveLabelAction = IAction<labelActionTypes.REMOVE_LABEL, {id : string}>
+type IRenameLabelAction = IAction<labelActionTypes.RENAME_LABEL, {id : string, newName: string}>;
+type IUpdateLabelColorAction = IAction<labelActionTypes.UPDATE_LABEL_COLOR, {id : string, newColor: string}>;
+type IUpdateLabelHotKeyAction = IAction<labelActionTypes.UPDATE_LABEL_HOTKEY, {id : string, newKey: string}>;
+type IRemoveLabelHotkeyAction = IAction<labelActionTypes.REMOVE_LABEL_HOTKEY, {id: string}>
+type ISetSelectedLabelAction = IAction<labelActionTypes.SET_SELECTED_LABEL, {id: string}>
 type IClearSelectedLabelAction = IAction<labelActionTypes.CLEAR_SELECTED_LABEL,undefined>;
 
-export const addNewLabel = (label: label): IAddNewLabelAction => {
+export const addNewLabel = (): IAddNewLabelAction => {
 	return {
 		type: labelActionTypes.ADD_LABEL,
-		data: {
-			newLabel: label
-		}
+		data: undefined
 	};
 };
 
-export const removeLabel = (id: number): IRemoveLabelAction => {
+export const removeLabel = (id : string): IRemoveLabelAction => {
 	return {
 		type: labelActionTypes.REMOVE_LABEL,
 		data: {
@@ -39,7 +36,7 @@ export const removeLabel = (id: number): IRemoveLabelAction => {
 	};
 };
 
-export const renameLabel = (id: number, newName: string): IRenameLabelAction=> {
+export const renameLabel = (id : string, newName: string): IRenameLabelAction=> {
 	return {
 		type: labelActionTypes.RENAME_LABEL,
 		data: {
@@ -49,7 +46,7 @@ export const renameLabel = (id: number, newName: string): IRenameLabelAction=> {
 	};
 };
 
-export const updateLabelColor = (id: number, newColor: string): IUpdateLabelColorAction => {
+export const updateLabelColor = (id : string, newColor: string): IUpdateLabelColorAction => {
 	return {
 		type: labelActionTypes.UPDATE_LABEL_COLOR,
 		data: {
@@ -59,7 +56,7 @@ export const updateLabelColor = (id: number, newColor: string): IUpdateLabelColo
 	};
 };
 
-export const updateLabelHotKey = (id: number, newKey: string): IUpdateLabelHotKeyAction => {
+export const updateLabelHotKey = (id : string, newKey: string): IUpdateLabelHotKeyAction => {
 	return {
 		type: labelActionTypes.UPDATE_LABEL_HOTKEY,
 		data: {
@@ -69,7 +66,7 @@ export const updateLabelHotKey = (id: number, newKey: string): IUpdateLabelHotKe
 	};
 };
 
-export const removeLabelHotKey = (id: number): IRemoveLabelHotkeyAction => {
+export const removeLabelHotKey = (id : string): IRemoveLabelHotkeyAction => {
 	return {
 		type: labelActionTypes.REMOVE_LABEL_HOTKEY,
 		data: {
@@ -78,7 +75,7 @@ export const removeLabelHotKey = (id: number): IRemoveLabelHotkeyAction => {
 	};
 };
 
-export const setSelectedLabel = (id: number): ISetSelectedLabelAction => {
+export const setSelectedLabel = (id : string): ISetSelectedLabelAction => {
 	return {
 		type: labelActionTypes.SET_SELECTED_LABEL,
 		data: {

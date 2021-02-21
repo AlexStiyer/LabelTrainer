@@ -6,8 +6,9 @@ import { addNewLabel, clearSelectedLabel,
 	setSelectedLabel 
 } from "../../actions/labelActions";
 import LabelDisplay from "../../components/label-display/LabelDisplay";
-import { IlabelState, label } from "../../shared/models/Label";
+import { IlabelState } from "../../shared/models/Label";
 import { IAppState } from "../../store/Store";
+import BoxLabelPanelForm from "./BoxLabelPanelForm";
 
 interface IPropsFromState {
     labelListState: IlabelState
@@ -20,13 +21,13 @@ const mapStateToProps = (appState: IAppState): IPropsFromState => {
 };
 
 interface IPropsFromDispatch {
-    addNewLabel: (lable: label) => unknown;
-    removeLabel: (id: number) => unknown;
-    renameLabel: (id: number, newName: string) => unknown;
-    updateLabelColor: (id:number, newColor: string) => unknown;
-    updateLabelHotKey: (id: number, newKey: string) => unknown;
-    removeLabelHotKey: (id: number) => unknown;
-    setSelectedLabel: (id: number) => unknown;
+    addNewLabel: () => unknown;
+    removeLabel: (id : string) => unknown;
+    renameLabel: (id : string, newName: string) => unknown;
+    updateLabelColor: (id: string, newColor: string) => unknown;
+    updateLabelHotKey: (id : string, newKey: string) => unknown;
+    removeLabelHotKey: (id : string) => unknown;
+    setSelectedLabel: (id : string) => unknown;
     clearSelectedLabel: () => unknown;
 }
 
@@ -50,7 +51,10 @@ class BoxLabelsPanel extends React.Component<Props> {
 	
 	render(){
 		return(
-			<div className="d-flex flex-column justify-content-start" style={{width: "25vw"}}>
+			<div className="d-flex flex-column justify-content-start">
+				<BoxLabelPanelForm
+					addLabel={() => this.props.addNewLabel()}
+				/>
 				{this.props.labelListState.labels.map(label => {
 					return (
 						<LabelDisplay
@@ -59,6 +63,7 @@ class BoxLabelsPanel extends React.Component<Props> {
 							updateHotKey={(id,newHotKey) => this.props.updateLabelHotKey(id,newHotKey)}
 							updateLabelName={(id,newLabelName) => this.props.renameLabel(id,newLabelName)}
 							updateColor={(id,newLabelName) => this.props.updateLabelColor(id,newLabelName)}
+							deleteLabel={(id)=> this.props.removeLabel(id)}
 						/>
 					);	
 				})}
