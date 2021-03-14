@@ -28,7 +28,7 @@ describe("WysInput tests", () => {
 		expect(value).toBe("this is a new test");
 	});
 
-	it("Clears value when focus is lost", () => {
+	it("Saves value when focus is lost", () => {
 		const inputComponent = screen.getByTestId("wysinput");
 		
 		fireEvent.focus(inputComponent);
@@ -37,7 +37,7 @@ describe("WysInput tests", () => {
 		
 		fireEvent.blur(inputComponent);
 		fireEvent.submit(screen.getByTestId("wysform"));
-		expect(value).toBe("test");
+		expect(value).toBe("this is a new test");
 	});
 
 	it("Limits input length when inputMaxLength prop is set", () => {
