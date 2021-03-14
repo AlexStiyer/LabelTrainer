@@ -13,9 +13,8 @@ export interface IWysInputState {
 }
 
 /**
-  'What You See' input. Functions as text until focused. 
-  User must hit enter to commit changes and submit the change.
-	If input loses focus, changes are discarded.
+	'What You See' input. Functions as text until focused.
+	Once focus is lost or enter key is hit, input is submitted.
  */
 class WysInput extends React.Component<IWysInputProps, IWysInputState> {
 	
@@ -31,8 +30,7 @@ class WysInput extends React.Component<IWysInputProps, IWysInputState> {
 	}
 
 	/*
-		Resetting focus after submit causes inputValue and displayValue to desync 
-		and swap after every enter.
+		Resetting focus after submit causes inputValue and displayValue to lose sync.
 		This ensures whatever is committed to the top level state is displayed.
 	*/
 	componentDidUpdate(prevProps: IWysInputProps){
@@ -61,11 +59,14 @@ class WysInput extends React.Component<IWysInputProps, IWysInputState> {
 					event.preventDefault();
 					this.props.commitChange(this.state.inputValue);
 					this.inputRef.current?.blur();
-				}}>
+				}}
+				onBlur={(event) => {
+					event.preventDefault();					
+					this.props.commitChange(this.state.inputValue);
+					this.inputRef.current?.blur();}}>
 				<p className={this.props.className}>
 					<input
 						ref={this.inputRef}
-						onBlur={()=>{this.discardChanges();}}
 						onChange={(event)=>{this.handleInput(event.target.value);}}
 						value={this.state.inputValue}
 						data-testid={"wysinput"}
